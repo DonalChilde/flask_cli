@@ -5,8 +5,6 @@ import click
 from flask import current_app
 from flask.cli import with_appcontext
 
-# from flask_cli.blueprints.cli_base.bp_config import bp
-
 
 class Environment:
     def __init__(self):
@@ -16,7 +14,6 @@ class Environment:
         """Logs a message to stderr."""
         output = msg
         if args:
-            # msg %= args
             msg_iter = chain((msg,), map(str, args))
             output = "\n\t".join(msg_iter)
         click.echo(output, file=sys.stderr)
@@ -28,9 +25,6 @@ class Environment:
 
 
 pass_environment = click.make_pass_decorator(Environment, ensure=True)
-
-
-###### Blueprint Method #########
 
 
 @click.group(
@@ -61,24 +55,3 @@ def sub_group(ctx, verbose):
 def command_B1_1(ctx):
     ctx.log("A log message.")
     ctx.vlog("A verbose log message.")
-
-
-# ###### Manual Method #####
-
-
-# @click.group(
-#     "app_manual", help="a top level group for app commands.",
-# )
-# @click.option("-v", "--verbose", is_flag=True, help="Enables verbose mode.")
-# @pass_environment
-# def app_group(ctx, verbose):
-#     ctx.verbose = verbose
-
-
-# @app_group.command(
-#     "command_M1", help="a command at the top level of the manual app group."
-# )
-# @pass_environment
-# def command_M1(ctx):
-#     ctx.log("command_M1 executed.")
-#     ctx.vlog("A verbose log message.")
