@@ -68,6 +68,16 @@ import click
 from flask import current_app
 from flask.cli import with_appcontext
 
+.....
+
+@click.group(
+    "app", help="a top level group for app commands.",
+)
+@click.option("-v", "--verbose", is_flag=True, help="Enables verbose mode.")
+@pass_environment
+def app_group(ctx, verbose):
+    ctx.verbose = verbose
+
 @app_group.command("info", help="an example command in the flask.app group.")
 @with_appcontext
 @pass_environment
@@ -109,3 +119,10 @@ Cons
 ## [Plugins](https://flask.palletsprojects.com/en/1.1.x/cli/#plugins)
 
 Might be useful if cli is developed separate from flask project? Needs its own setup.py.
+
+## References and inspirations
+
+- [cookiecutter-flask-restful](https://github.com/karec/cookiecutter-flask-restful) - Cookiecutter template for flask restful, including blueprints, application factory, and more
+- [Build a SAAS App with Flask Course](https://github.com/nickjj/build-a-saas-app-with-flask) - A great video course on building an entire saas app. Regularly updated to cover advances and new packages.
+- [The Flask docs](https://flask.palletsprojects.com/en/1.1.x/)
+- [Click](https://github.com/pallets/click) - Useful examples. esp. [complex](https://github.com/pallets/click/tree/master/examples/complex)
