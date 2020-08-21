@@ -8,7 +8,7 @@ derived from
 from flask import Flask
 
 
-from flask_cli.blueprints import hello_world
+from flask_cli.blueprints import hello_world, cli_base
 
 
 def create_app(testing=False, cli=False):
@@ -42,3 +42,4 @@ def register_blueprints(app):
     """register all blueprints for application
     """
     app.register_blueprint(hello_world.bp_config.bp)
+    app.register_blueprint(cli_base.bp_config.bp)
