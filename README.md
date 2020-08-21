@@ -89,7 +89,7 @@ See the branch labeled manual_cli for examples.
 
 Pros
 
-- Only one extra statement required over the blueprint.cli method.
+- Only one extra statement plus one decorator per function required over the blueprint.cli method.
 - Does not require the installation of a separate cli app.
 - Automatic discovery of commands that are children of a registered Click group, so long as the containing module is imported somewhere, e.g. in the package `__init__.py`
 - Easy to divide areas of responsibility using existing Blueprint structure.
